@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: white;
+}
+.navBar {
+    display: flex;
+    background-color: grey;
+    width: 100vw;
+}
+.navBarComp {
+    float: left;
+    width: 33.3vw;
+    text-align: center;
+}
+.navBarComp:hover {
+    background-color: white;
+}
+.navBarComp h1 {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    color: white;
+}
