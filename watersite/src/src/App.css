@@ -98,7 +98,6 @@ body {
     margin-left: 75vw;
     width: 20vw;
     display: inline-block;
-    background-color: blue;
 }
 .cartButton {
     margin: auto;
@@ -113,13 +112,80 @@ body {
 .cartButton:hover {
     background-color: grey;
 }
+.cartButton img {
+    width: 4vw;
+    height: 4vw;
+    margin: .5vw;
+}
 .dropDown {
     position: absolute;
     width: 20vw;
     display: inline-block;
-    background-color: blue;
-    border-radius: 25px;
+    /* box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
+}
+.cartContent {
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* max-height: 50vh; */
+    height: 40vh;
+    /* padding-top: 1px;
+    padding-bottom: 1px; */
+}
+.cartItem {
+    border-width: 5px;
+    height: 8vh;
+    width: 20vw;
+    border-color: rgb(151, 151, 151);
+    display: flex;
+}
+.cartItem img {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 2vw;
+    height: 8vh;
+}
+.cartText {
+    position: relative;
+    display: inline-block;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vh;
+    text-align: center;
+    width: 10vw;
+}
+.cartStuff p {
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 .dropDown img {
+    position: relative;
+    display: block;
     width: 20vw;
+    height: 5vh;
+}
+.trashButton {
+    position: relative;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    width: 5vw;
+    height: 6vh;
+}
+.trashButton img {
+    position: relative;
+    margin-top: 1vh;
+    margin-left: .5vw;
+    margin-right: .5vw;
+    width: 3vw !important;
+    height: 4vh !important;
+}
+.checkOut {
+    margin: 0 5vw 1vh 5vw;
+    width: 10vw;
+}
+.superDiv {
+    background-color: red;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
