@@ -1,6 +1,7 @@
 export class User {
     static waterStack : WaterBottle[] = [];
     static droplets : number = 100;
+    static username : string = "";
 
     static pop() {
         this.waterStack.splice(0, 1);
@@ -24,8 +25,21 @@ export class User {
             {
                 waterStack: this.waterStack,
                 droplets: this.droplets,
+                username: this.username,
             }
         ));
+        const request = {
+        method: 'POST',
+        body: JSON.stringify({
+            waterStack: User.waterStack,
+            droplets: User.droplets
+            }),
+            headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8'
+            })
+        }
+
+        fetch("http://localhost:5000/update", request).then(textData => { return textData.text(); });
     }
 
     static generate() {
@@ -34,6 +48,7 @@ export class User {
             var inter = JSON.parse(stuff);
             User.waterStack = inter.waterStack;
             User.droplets = inter.droplets;
+            User.username = inter.username;
         }
     }
 }

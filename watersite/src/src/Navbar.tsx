@@ -18,13 +18,19 @@ function Navbar() {
         })
       }
 
-      const resultString = JSON.parse(await (fetch("http://localhost:5000/auth", request).then(textData => { return textData.text(); })));
+      const response = await fetch("http://localhost:5000/auth", request);
+      const result = await response.json();
+      User.droplets = result.droplets;
+      User.username = result.user;
+      alert(result.user)
+      User.waterStack = JSON.parse(result.waterStack);
 
   }});
   return (
     <div className="nav">
       <div className="fixedSignIn">
-        <p onClick = {() => login()}>Sign In</p>
+        {User.username == "" && <p onClick = {() => login()} style={{cursor: "pointer"}}>Sign In</p>}
+        {User.username != "" && <p>Hello, {User.username}</p>}
       </div>
       <div className="title">
         <h1>
