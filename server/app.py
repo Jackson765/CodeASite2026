@@ -13,7 +13,9 @@ db_config = {
     "host": os.getenv("HOST"),
     "user": os.getenv("USER"),
     "password": os.getenv("PASSWORD"),
-    "database": os.getenv("DATABASE")   
+    "database": os.getenv("DATABASE"),
+    "port": 15291, # Aiven uses 15291, not 3306
+    "ssl_disabled": False
 }
 db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
