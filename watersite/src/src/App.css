@@ -281,3 +281,116 @@ body {
     z-index: 100;
     position: relative;
 }
+.page-wrapper {
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* Typography */
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  letter-spacing: -0.05em;
+  color: #0f172a;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.goal-text {
+  font-size: 1.125rem;
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+/* The Process Box */
+.process-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.process-card-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+
+.step-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+  .step-row {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+.step-label {
+  font-weight: 900;
+  color: #3b82f6;
+  min-width: 70px;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.step-desc {
+  color: #334155;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.step-desc strong {
+  color: #0f172a;
+}
+
+/* Call to Action */
+.cta-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cta-quote {
+  font-style: italic;
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.6);
+  transition: all 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
