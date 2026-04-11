@@ -5,21 +5,67 @@ import { User, type WaterBottle } from './User';
 
 function Shop() {
   const [viewdex, setViewdex] = useState(-1);
-  const [addex, setAddex] = useState(-1);
   const [isCart, setIsCart] = useState(false);
   const [cart, setCart] = useState<WaterBottle[]>([]);
   const [checkout, isCheckout] = useState(false);
-  const [validText, setValidText] = useState("");
   User.generate();
 
   const waterbottles : WaterBottle[] = [
     {
       name: "Polar Springs", 
-      cost: 1, 
+      cost: 100, 
       img: "polarSprings.png", 
-      description: "So cool",
+      description: "This is one of my favorites!  Everyone knows and loves polar springs, and for good reason.  This water is phenomenal...",
       margin: 5,
       margin2: 20,
+    },
+    {
+      name: "Dasani", 
+      cost: 10, 
+      img: "dasani.png", 
+      description: "ew",
+      margin: 2,
+      margin2: 10,
+    },
+    {
+      name: "Aquafina", 
+      cost: 50, 
+      img: "aquafina.png", 
+      description: "So refreshing, you're gonna say yummy yummy yum in my tummy tummy tum.",
+      margin: 2,
+      margin2: 10,
+    },
+    {
+      name: "Evian", 
+      cost: 1, 
+      img: "evian.png", 
+      description: "wtf is evian",
+      margin: 5,
+      margin2: 20,
+    },
+    {
+      name: "Fiji", 
+      cost: 1000, 
+      img: "fiji.png", 
+      description: "Think...luxury.  Sounds like this is one for the Bahamas haha!",
+      margin: 2,
+      margin2: 10,
+    },
+    {
+      name: "Pure Life", 
+      cost: 1, 
+      img: "pureLife.png", 
+      description: "I beg my mommy daily to buy the polar springs but she just refuses.  She insists of pure life :(",
+      margin: 2,
+      margin2: 10,
+    },
+    {
+      name: "Smart Water", 
+      cost: 500, 
+      img: "smartWater.png", 
+      description: "Whip out your stethoscopes because we've got a nerd over here!  This water bottle isn't shy to tell you his latest theorems.",
+      margin: 2,
+      margin2: 10,
     },
   ];
   function addToCart(item : WaterBottle) {
@@ -103,7 +149,9 @@ function Shop() {
           </div>
           <h1 className="strokinIt">{User.droplets}💧</h1>
           </div>
-          <div onClick={() => {if (isCart) setIsCart(false)}}>{waterbottles.map((value, index) =>
+          <div onClick={() => {if (isCart) setIsCart(false)}}>
+            <div style={{display: "flex", width: "100vw", flexWrap: "wrap"}}>
+              {waterbottles.map((value, index) =>
           <div className = "waterBottle" style={{"--marginLol": value.margin} as React.CSSProperties} key={index}>
             <img src={value.img}/>
             <p>{value.name}: {value.cost}💧</p>
@@ -113,7 +161,7 @@ function Shop() {
               <div className = "buttonLol " onClick={() => addToCart(value)}><p>Add to Cart</p></div>
             </div>
           </div>
-        )}</div></div>
+        )}</div></div></div>
       }
       {
         (viewdex != -1 && !checkout) && <div style={{"display": "flex", "width": "100vw"}} onClick={() => {if (isCart) setIsCart(false)}}>

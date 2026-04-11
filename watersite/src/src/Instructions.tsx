@@ -1,6 +1,6 @@
-import React from "react";
 import './App.css'
 import Navbar from './Navbar';
+import { User } from "./User";
 
 function RobotDrinkProtocol() {
   const containerStyle = {
@@ -48,6 +48,7 @@ function RobotDrinkProtocol() {
     borderRadius: "4px",
     fontStyle: "italic"
   };
+  User.generate();
 
   return (
     <div><Navbar />

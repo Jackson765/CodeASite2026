@@ -25,7 +25,7 @@ body {
 }
 .navBarComp {
     float: left;
-    width: 25vw;
+    width: 20vw;
     text-align: center;
     white-space: nowrap;
 }
@@ -198,6 +198,9 @@ body {
     margin-top: 2vh;
     width: 5vw;
     height: 6vh;
+}
+.trashButton:hover {
+    background-color: rgb(121, 0, 151);
 }
 .trashButton img {
     position: relative;

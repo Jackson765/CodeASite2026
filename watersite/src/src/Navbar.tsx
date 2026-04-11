@@ -4,6 +4,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { User } from './User';
 
 function Navbar() {
+  const [forceRefresh, refresh] = useState(false);
+
   const login = useGoogleLogin({
     onSuccess: async tokenResponse => {
       const request = {
@@ -18,13 +20,13 @@ function Navbar() {
         })
       }
 
-      const response = await fetch("http://localhost:5000/auth", request);
+      const response = await fetch("https://codeasite2026.onrender.com/auth", request);
       const result = await response.json();
       User.droplets = result.droplets;
       User.username = result.user;
-      alert(result.user)
-      User.waterStack = JSON.parse(result.waterStack);
-
+      User.waterStack = result.waterStack;
+      User.save()
+      refresh(!forceRefresh);
   }});
   return (
     <div className="nav">
@@ -59,7 +61,13 @@ function Navbar() {
             <h1>Gamble</h1>
           </div>
         </a>
+        <a href="/https://game-web-host--kekepui.replit.app/">
+          <div className="navBarComp">
+            <h1>Bonus Game</h1>
+          </div>
+        </a>
       </div>
+    {forceRefresh && <></>}
     </div>
   )
 }

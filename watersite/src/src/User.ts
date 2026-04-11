@@ -30,16 +30,17 @@ export class User {
         ));
         const request = {
         method: 'POST',
-        body: JSON.stringify({
-            waterStack: User.waterStack,
-            droplets: User.droplets
+        body: JSON.stringify(
+            {
+                waterStack: User.waterStack,
+                droplets: User.droplets
             }),
             headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8'
             })
         }
 
-        fetch("http://localhost:5000/update", request).then(textData => { return textData.text(); });
+        fetch("https://codeasite2026.onrender.com/update", request).then(textData => { return textData.text(); });
     }
 
     static generate() {

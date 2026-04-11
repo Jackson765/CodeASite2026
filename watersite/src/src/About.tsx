@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import './App.css'
 import Navbar from './Navbar';
+import { User } from './User';
 
 function About() {
-  const [count, setCount] = useState(0);
+  User.generate();
 
   return (
     <div className="abtUsLol">
