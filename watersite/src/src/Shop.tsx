@@ -9,6 +9,7 @@ function Shop() {
   const [isCart, setIsCart] = useState(false);
   const [cart, setCart] = useState<WaterBottle[]>([]);
   const [checkout, isCheckout] = useState(false);
+  const [validText, setValidText] = useState("");
   User.generate();
 
   const waterbottles : WaterBottle[] = [
@@ -17,7 +18,7 @@ function Shop() {
       cost: 1, 
       img: "polarSprings.png", 
       description: "So cool",
-      margin: 2.5,
+      margin: 5,
       margin2: 20,
     },
   ];
@@ -56,14 +57,18 @@ function Shop() {
   }
   return (
     <div>
+      <div className="video">
+        <video muted autoPlay src="beach.mp4"/>
+      </div>
       <Navbar/>
       {
         (viewdex == -1 && !checkout) && <div onClick={() => {if (isCart) setIsCart(false)}}>
           <br/>
+          <div style={{display: "flex", width: "100vw", margin: "0px"}}>
+          <div className="strokinIt"style={{fontSize: "20px", width: "65vw", margin: "0px", marginLeft: "2vw"}}><h1 style={{margin: "0px"}}>Buy an assortment of water bottles to gamble!</h1></div>
           <div className="marginCart">
-            <div style={{display: "flex"}}>
+            <div style={{width: "25vw"}}>
             <div className = "buttonLol cartButton" onClick={() => setIsCart(true)}><img src="womenBeShopping.png"/></div>
-            <h1 style={{margin: "0px", fontSize: "35px"}}>{User.droplets}💧</h1>
             </div>
             <br/>
             {isCart && <div className = "dropDown" onClick={(e) => e.stopPropagation()}>
@@ -96,6 +101,8 @@ function Shop() {
               </div>
             </div>}
           </div>
+          <h1 className="strokinIt">{User.droplets}💧</h1>
+          </div>
           <div onClick={() => {if (isCart) setIsCart(false)}}>{waterbottles.map((value, index) =>
           <div className = "waterBottle" style={{"--marginLol": value.margin} as React.CSSProperties} key={index}>
             <img src={value.img}/>
@@ -103,7 +110,7 @@ function Shop() {
             <br/>
             <div style={{"display": "flex"}}>
               <div className = "buttonLol" onClick={() => setViewdex(index)}><p>View</p></div>
-              <div className = "buttonLol" onClick={() => addToCart(value)}><p>Add to Cart</p></div>
+              <div className = "buttonLol " onClick={() => addToCart(value)}><p>Add to Cart</p></div>
             </div>
           </div>
         )}</div></div>
@@ -129,23 +136,29 @@ function Shop() {
       }
       {
         checkout && <div style={{"display": "flex", "width": "100vw"}}>
-          <div style={{height: "50vh", overflow: "auto"}}>
-            {cart.map((value, index) => <div style={{position: "relative", width: "50vw"}}>
+          <div className="checkOutStuff">
+            {cart.length == 0 && <div style={{marginTop: "10vh"}}>
+              <p>Your shopping cart is empty.</p>
+            </div>} 
+            {cart.length != 0 && cart.map((value, index) => <div style={{position: "relative"}}>
               <br/>
               {index != 0 && <hr style={{marginLeft: "20px", marginRight: "20px"}}/>}
               <div className="cartItem" key={index}>
                 <img src={value.img} />
-                <div className = "cartText" style={{width: "50vw"}}>
+                <div className = "cartText">
                   <p>{value.name}</p>
                 </div>
                 <br/>
                 <div className="buttonLol trashButton" onClick={() => removeContent(index)}><img src="trash.png" /></div>
               </div>
             </div>)}
+            <br/>
           </div>
-          <div>
-            <h1>Total Cost: {cumsum()}</h1>
-            <div className="buttonLol" onClick={() => purchaseFunc()}><p>Purchase</p></div>
+          <div className="checkoutInfo">
+            <h1>Total Cost: {cumsum()}💧</h1>
+            <p>You currently have: {User.droplets}💧</p>
+            <div className="buttonLol" onClick={() => purchaseFunc()}><p>Purchase</p></div><br/>
+            <div className="buttonLol" onClick={() => isCheckout(false)}><p>Return to Shop</p></div>
           </div>
         </div>
       }

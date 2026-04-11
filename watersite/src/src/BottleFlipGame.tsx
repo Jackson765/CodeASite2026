@@ -44,6 +44,12 @@ function BottleFlipGame() {
   return (
     <div>
         <div className="waterGame">
+            <div className = "infoTextGame">
+                <p>Click the water bottle to spin it.</p><br/>
+                <p>If it lands on its side you lose the water bottle.</p><br/>
+                <p>If it lands on its bottom you get 10 droplets.</p><br/>
+                <p>If it lands on its cap you get 100 droplets.</p>
+            </div>
             {User.waterStack.length == 0 && <div className="txtLol">
                 <h1>
                     No water bottles to flip.
@@ -51,6 +57,7 @@ function BottleFlipGame() {
             </div>}
             {User.waterStack.length != 0 && 
             <img onAnimationEnd={endAnim} onClick={() => spinIt()} className={`waterImgGame ${spin == 0 ? "waterAnim1" : ""} ${spin == 1 ? "waterAnim2" : ""} ${spin == 2 ? "waterAnim3" : ""} ${spin == 3 ? "waterAnim4" : ""}`}src={User.waterStack[0].img}/>}
+            {User.waterStack.length != 0 && <img className="tableLMAO" src="uglyTable.png"/>}
             {text != "" && <div className="txtLol">
                 <h1>{text}</h1>
                 <h3>{"Click the water bottle again to continue."}</h3>
