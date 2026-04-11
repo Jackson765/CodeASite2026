@@ -4,6 +4,7 @@
 }
 body {
     background-color: white;
+    display: inline-block;
 }
 .navBar {
     display: flex;
@@ -22,4 +23,103 @@ body {
     margin-top: 1vh;
     margin-bottom: 1vh;
     color: white;
+}
+.title {
+    width: 100vw;
+    text-align: center;
+    background-color: green;
+    display: inline-block;
+}
+.title h1{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.waterBottle {
+    margin: 5vh 2vw 5vh 2vw;
+    width: 12vw;
+    text-align: center;
+}
+.waterBottle img {
+    width: calc(12vw + (var(--marginLol)) * -2vw);
+    margin-left: calc(var(--marginLol) * 1vw);
+    margin-right: calc(var(--marginLol) * 1vw);
+    height: 30vh;
+}
+.waterBottle .buttonLol {
+    background-color: white;
+    margin-bottom: 20px;
+    margin: auto;
+}
+.waterBottle .buttonLol p {
+    margin: 1vh 1vw 1vh 1vw;
+}
+.waterBottle .buttonLol:hover {
+    background-color: grey;
+}
+.buttonLol {
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+.waterText {
+    width: 50vw;
+    display: inline-block;
+}
+.waterText h1 {
+    font-size: 40px;
+}
+.waterText p, h1, h2, .buttonLol{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.waterText .buttonLol p {
+    margin: 10px;
+}
+.waterText .buttonLol:hover {
+    background-color: grey;
+}
+.waterText h1 {
+    margin-top: 10vh;
+}
+.waterImg {
+    display: inline-block;
+    width: 50vw;
+}
+.waterImg img {
+    width: calc(50vw + (var(--marginLol)) * -2vw);
+    margin-left: calc(var(--marginLol) * 1vw);
+    margin-right: calc(var(--marginLol) * 1vw);
+    height: 50vh;
+    margin-top: 10vh;
+}
+.marginCart {
+    margin-left: 75vw;
+    width: 20vw;
+    display: inline-block;
+    background-color: blue;
+}
+.cartButton {
+    margin: auto;
+    width: 5vw;
+    height: 5vw;
+    margin-left: 7.5vw;
+    background-color: white;
+}
+.cartButton p {
+    margin: 20px;
+}
+.cartButton:hover {
+    background-color: grey;
+}
+.dropDown {
+    position: absolute;
+    width: 20vw;
+    display: inline-block;
+    background-color: blue;
+    border-radius: 25px;
+}
+.dropDown img {
+    width: 20vw;
 }

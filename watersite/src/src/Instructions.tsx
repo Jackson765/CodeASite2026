@@ -8,8 +8,6 @@ function Instructions() {
   return (
     <div>
       <Navbar/>
-      <h1>Balls</h1>
-      <a href="/shop">hi</a>
     </div>
   )
 }
