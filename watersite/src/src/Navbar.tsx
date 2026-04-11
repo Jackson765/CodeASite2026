@@ -3,7 +3,7 @@ import './App.css'
 
 function Navbar() {
   return (
-    <div>
+    <div className="nav">
       <div className="title">
         <h1>
           Water Bottles for Sale
@@ -23,6 +23,11 @@ function Navbar() {
         <a href="/instructions">
           <div className="navBarComp">
             <h1>Instructions</h1>
+          </div>
+        </a>
+        <a href="/bottle">
+          <div className="navBarComp">
+            <h1>Gamble</h1>
           </div>
         </a>
       </div>

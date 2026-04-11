@@ -1,23 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './Navbar';
-
-interface WaterBottle {
-  name : string;
-  cost : number;
-  img : string;
-  description: string;
-  margin: number;
-  margin2: number;
-}
+import { User, type WaterBottle } from './User';
 
 function Shop() {
   const [viewdex, setViewdex] = useState(-1);
   const [addex, setAddex] = useState(-1);
   const [isCart, setIsCart] = useState(false);
   const [cart, setCart] = useState<WaterBottle[]>([]);
-  const [deling, setDeling] = useState(false);
   const [checkout, isCheckout] = useState(false);
+  User.generate();
 
   const waterbottles : WaterBottle[] = [
     {
@@ -40,6 +32,28 @@ function Shop() {
     setCart(copy);
     setIsCart(true);
   }
+  function cumsum() : number {
+    var cum : number = 0;
+    for (var i : number = 0; i < cart.length; i++) {
+      cum += cart[i].cost;
+    }
+    return cum;
+  }
+  function purchaseFunc() {
+    if (User.droplets >= cumsum()) {
+      isCheckout(false);
+      User.append(cart);
+      User.addDrops(-cumsum());
+      localStorage.setItem('userData', JSON.stringify({
+        water: User.waterStack,
+        droplets: User.droplets,
+      }));
+      setCart([]);
+    }
+    else {
+      
+    }
+  }
   return (
     <div>
       <Navbar/>
@@ -47,7 +61,10 @@ function Shop() {
         (viewdex == -1 && !checkout) && <div onClick={() => {if (isCart) setIsCart(false)}}>
           <br/>
           <div className="marginCart">
+            <div style={{display: "flex"}}>
             <div className = "buttonLol cartButton" onClick={() => setIsCart(true)}><img src="womenBeShopping.png"/></div>
+            <h1 style={{margin: "0px", fontSize: "35px"}}>{User.droplets}💧</h1>
+            </div>
             <br/>
             {isCart && <div className = "dropDown" onClick={(e) => e.stopPropagation()}>
               <div style={{position: "relative", width: "20vw"}}>
@@ -56,7 +73,7 @@ function Shop() {
                   <div className="cartContent">
                     {cart.length == 0 && <div>
                       <br/>
-                      <p>No items in the shop.</p>
+                      <p>No items in your cart.</p>
                       <br/>
                     </div>}
                     {cart.map((value, index) => <div style={{position: "relative"}}>
@@ -82,7 +99,7 @@ function Shop() {
           <div onClick={() => {if (isCart) setIsCart(false)}}>{waterbottles.map((value, index) =>
           <div className = "waterBottle" style={{"--marginLol": value.margin} as React.CSSProperties} key={index}>
             <img src={value.img}/>
-            <p>{value.name}: ${value.cost}</p>
+            <p>{value.name}: {value.cost}💧</p>
             <br/>
             <div style={{"display": "flex"}}>
               <div className = "buttonLol" onClick={() => setViewdex(index)}><p>View</p></div>
@@ -95,7 +112,7 @@ function Shop() {
         (viewdex != -1 && !checkout) && <div style={{"display": "flex", "width": "100vw"}} onClick={() => {if (isCart) setIsCart(false)}}>
             <div className = "waterText">
               <h1>{waterbottles[viewdex].name}</h1>
-              <h2>Cost: ${waterbottles[viewdex].cost}</h2>
+              <h2>Cost: {waterbottles[viewdex].cost}💧</h2>
               <br/>
               <p>{waterbottles[viewdex].description}</p>
               <br/>
@@ -112,17 +129,24 @@ function Shop() {
       }
       {
         checkout && <div style={{"display": "flex", "width": "100vw"}}>
-          {cart.map((value, index) => <div style={{position: "relative", width: "50vw"}}>
-            <br/>
-            {index != 0 && <hr style={{marginLeft: "20px", marginRight: "20px"}}/>}
-            <div className="cartItem" key={index}>
-              <img src={value.img} />
-              <div className = "cartText" style={{width: "50vw"}}>
-                <p>{value.name}</p>
+          <div style={{height: "50vh", overflow: "auto"}}>
+            {cart.map((value, index) => <div style={{position: "relative", width: "50vw"}}>
+              <br/>
+              {index != 0 && <hr style={{marginLeft: "20px", marginRight: "20px"}}/>}
+              <div className="cartItem" key={index}>
+                <img src={value.img} />
+                <div className = "cartText" style={{width: "50vw"}}>
+                  <p>{value.name}</p>
+                </div>
+                <br/>
+                <div className="buttonLol trashButton" onClick={() => removeContent(index)}><img src="trash.png" /></div>
               </div>
-              <div className="buttonLol trashButton" onClick={() => removeContent(index)}><img src="trash.png" /></div>
-            </div>
-          </div>)} 
+            </div>)}
+          </div>
+          <div>
+            <h1>Total Cost: {cumsum()}</h1>
+            <div className="buttonLol" onClick={() => purchaseFunc()}><p>Purchase</p></div>
+          </div>
         </div>
       }
     </div>

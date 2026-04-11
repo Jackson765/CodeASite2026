@@ -5,6 +5,7 @@
 body {
     background-color: white;
     display: inline-block;
+    overflow-x: hidden;
 }
 .navBar {
     display: flex;
@@ -13,8 +14,9 @@ body {
 }
 .navBarComp {
     float: left;
-    width: 33.3vw;
+    width: 25vw;
     text-align: center;
+    white-space: nowrap;
 }
 .navBarComp:hover {
     background-color: white;
@@ -85,7 +87,7 @@ body {
 }
 .waterImg {
     display: inline-block;
-    width: 50vw;
+    width: 40vw;
 }
 .waterImg img {
     width: calc(50vw + (var(--marginLol)) * -2vw);
@@ -188,4 +190,94 @@ body {
     background-color: red;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+.waterGame {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    z-index: 0;
+}
+.waterGame h1 {
+    margin-top: 20vh;
+}
+.waterImgGame {
+    position: absolute;
+    width: 5vw;
+    height: 30vh;
+    margin-top: 60vh;
+    cursor: pointer;
+}
+.waterAnim1 {
+    animation-name: fall, flip1;
+    animation-duration: 1s, 1s;
+}
+.waterAnim2 {
+    animation-name: fall, flip2;
+    animation-duration: 1s, 1s;
+    transform: rotate(810deg);
+}
+.waterAnim3 {
+    animation-name: fall, flip3;
+    animation-duration: 1s, 1s;
+    transform: rotate(900deg);
+}
+.waterAnim4 {
+    animation-name: fall, flip4;
+    animation-duration: 1s, 1s;
+    transform: rotate(990deg);
+}
+@keyframes fall{
+    from {
+        margin-top: 60vh;
+    }
+    50% {
+        margin-top: 30vh;
+    }
+    to {
+        margin-top: 60vh;
+    }
+}
+@keyframes flip1{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(720deg);
+    }
+}
+@keyframes flip2{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(810deg);
+    }
+}
+@keyframes flip3{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(900deg);
+    }
+}
+@keyframes flip4{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(990deg);
+    }
+}
+.txtLol {
+    margin-top: 30vh;
+    text-align: center;
+    margin-left: auto;
+    position: absolute;
+    width: 100vw;
+}
+.nav {
+    z-index: 100;
+    position: relative;
 }
