@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { useGoogleLogin } from '@react-oauth/google';
 import { User } from './User';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [forceRefresh, refresh] = useState(false);
@@ -41,31 +42,26 @@ function Navbar() {
         <p>A bridge between obtaining and drinking water, all in an instant.</p>
       </div>
       <div className="navBar">
-        <a href="/">
+        <Link to="/about">
           <div className="navBarComp">
             <h1>About Us</h1>
           </div>
-        </a>
-        <a href="/shop">
+        </Link>
+        <Link to="/shop">
           <div className="navBarComp">
             <h1>Shop</h1>
           </div>
-        </a>
-        <a href="/instructions">
+        </Link>
+        <Link to="/instructions">
           <div className="navBarComp">
             <h1>Instructions</h1>
           </div>
-        </a>
-        <a href="/bottle">
+        </Link>
+        <Link to="/bottle">
           <div className="navBarComp">
             <h1>Gamble</h1>
           </div>
-        </a>
-        <a href="/https://game-web-host--kekepui.replit.app/">
-          <div className="navBarComp">
-            <h1>Bonus Game</h1>
-          </div>
-        </a>
+        </Link>
       </div>
     {forceRefresh && <></>}
     </div>

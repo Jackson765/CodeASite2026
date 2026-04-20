@@ -4,10 +4,24 @@ from flask import Flask, request
 import requests
 import mysql.connector
 import json
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "https://jaxwithmoreletters.com", 
+            "http://jaxwithmoreletters.com", 
+            "http://jaxwithmoreletters.com/watersite/",
+            "http://localhost:5173"
+        ],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }
+})
 
 db_config = {
     "host": os.getenv("HOST"),
